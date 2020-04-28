@@ -26,6 +26,11 @@ public class AuthController {
     @RequestMapping(value = "/auth/refresh", method = RequestMethod.POST)
     public ResponseEntity<JsonObject> refreshAccessToken(@RequestHeader(value = "Refresh-Token", required = false) String refresh,
                                                          @RequestHeader(value = "Auth-Token", required = false) String access)  {
+        if(refresh == null || refresh.equals(""))
+            return ErrorResponse.JsonFromMessage("NO refresh token in request").collect();
+        if(access == null || access.equals(""))
+            return ErrorResponse.JsonFromMessage("NO access token in request").collect();
+
         String newToken = null;
         try { newToken = authService.refresh(access, refresh); } catch (ValidationError v) {
             switch (v.errorCode) {
@@ -50,7 +55,8 @@ public class AuthController {
      * @param credentials
      * @return an access token and refresh token id on success, error on fail.
      */
-        @RequestMapping(value = "/auth/login", method = RequestMethod.POST)
+    @CrossOrigin(origins ="*", allowedHeaders="*")
+    @RequestMapping(value = "/auth/login", method = RequestMethod.POST)
     public ResponseEntity<JsonObject> loginWithCredentials(@RequestBody(required = false) AuthCredentials credentials) {
         var genericError = ErrorResponse.JsonFromMessage("missing credentials");
         try { credentials.validate(); }
