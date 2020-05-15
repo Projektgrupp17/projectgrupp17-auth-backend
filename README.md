@@ -1,6 +1,25 @@
 # projectgrupp17-auth-backend
 auth service for iot project using JWT
-implemented with spring testing with mockito
+implemented with spring
+
+Unit testing with Junit and Mockito.
+
+Integration testing using SpringBoot test tools.
+
+## Description
+Provides secure user creation authentication based on token and refreshToken flow.
+
+### User creation:
+* New users can be created (see the api documentation). Passwords are stored as salted hashes.
+
+### User authentication mechanism:
+* A short lived token along with an ID of a long lived refresh-token is provided on authentication.
+
+* A server requiring identity verification can use the public key to verify the permissons and valididty of the token.
+
+* A client with an outdated refresh token can get a new short-lived refresh token by supplying the outdated access-token along with a refresh-token.
+
+The default access level is **user**.
 
 ![Java CI with Gradle](https://github.com/krummelur/projectgrupp17-auth-backend/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 
