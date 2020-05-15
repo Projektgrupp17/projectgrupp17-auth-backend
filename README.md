@@ -6,7 +6,10 @@ Unit testing with Junit and Mockito.
 
 Integration testing using SpringBoot test tools.
 
-## Description
+![Java CI with Gradle](https://github.com/krummelur/projectgrupp17-auth-backend/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
+
+
+## Purpose
 Provides secure user creation authentication based on token and refreshToken flow.
 
 ### User creation:
@@ -20,8 +23,6 @@ Provides secure user creation authentication based on token and refreshToken flo
 * A client with an outdated refresh token can get a new short-lived refresh token by supplying the outdated access-token along with a refresh-token.
 
 The default access level is **user**.
-
-![Java CI with Gradle](https://github.com/krummelur/projectgrupp17-auth-backend/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 
 
 ## Endpoints
